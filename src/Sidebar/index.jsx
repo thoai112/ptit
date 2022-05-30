@@ -252,7 +252,7 @@ const Sidebar = () => {
     }, []);
 
     const fetchData = async() => {
-        const response = await fetch('http://localhost:5000/api/current', {
+        const response = await fetch('https://ptitvpn.herokuapp.com/api/current', {
         headers:{
             'Content-Type': 'application/json',
             'Authorization': 'Bearer ' + token
