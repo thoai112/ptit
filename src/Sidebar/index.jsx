@@ -306,14 +306,14 @@ const Sidebar = () => {
             <img src={Documents} alt="Documents" />
             <Text clicked={click}>Network</Text>
           </Item>
-          <Item
-            onClick={() => setClick(false)}
-            activeClassName="active"
-            to="/projects"
-          >
-            <img src={Projects} alt="Projects" />
-            <Text clicked={click}>Projects</Text>
-          </Item>
+//           <Item
+//             onClick={() => setClick(false)}
+//             activeClassName="active"
+//             to="/projects"
+//           >
+//             <img src={Projects} alt="Projects" />
+//             <Text clicked={click}>Projects</Text>
+//           </Item>
         </SlickBar>
 
         <Profile clicked={profileClick}>
