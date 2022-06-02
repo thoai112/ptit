@@ -58,9 +58,8 @@ export default function Networks() {
 
 
     const token = localStorage.getItem("token");
-    const role = localStorage.getItem("role");
 
-    const GetServerData = () => {
+    const GetNetworkData = () => {
 
         API.get("/network/getnetwork", { headers: {"Authorization" : `Bearer ${token}`} })
             .then(response => {
@@ -82,9 +81,9 @@ export default function Networks() {
             }
         })
     }
-    const insertServer = (server) => {
+    const insertNetwork = (network) => {
 
-        API.post("/network/addnetwork", server, { headers: {"Authorization" : `Bearer ${token}`} })
+        API.post("/network/addnetwork", network, { headers: {"Authorization" : `Bearer ${token}`} })
             .then(response => {
                 
                     alert(response.data.message)
@@ -96,10 +95,10 @@ export default function Networks() {
             })
     }
 
-    const updateServer = (id,edit) =>{
+    const updateNetwork = (id,edit) =>{
 
-        const server = JSON.stringify(edit)
-        API.put(`/network/${id}`, server, { headers: {"Authorization" : `Bearer ${token}`} } )
+        const network = JSON.stringify(edit)
+        API.put(`/network/${id}`, network, { headers: {"Authorization" : `Bearer ${token}`} } )
         .then(response => {
             alert(response.data.message)
             window.location.reload()
@@ -110,15 +109,15 @@ export default function Networks() {
                 
     }
 
-    const addOrEdit = (server, resetForm) => {
-        if (server.id === 0)
-            insertServer(server)
+    const addOrEdit = (network, resetForm) => {
+        if (network.id === 0)
+            insertNetwork(network)
         else
-            updateServer(recordForEdit.id, server)
+            updateNetwork(recordForEdit.id, network)
         resetForm()
         setRecordForEdit(null)
         setOpenPopup(false)
-        setRecords(GetServerData())
+        setRecords(GetNetworkData())
     }
 
     const openInPopup = item => {
@@ -144,7 +143,7 @@ export default function Networks() {
             isOpen: false
         })
         handleDelete(id);
-        setRecords(GetServerData())
+        setRecords(GetNetworkData())
         setNotify({
             isOpen: true,
             message: 'Deleted Successfully',
@@ -153,7 +152,7 @@ export default function Networks() {
     }
 
     useEffect(() => {
-        GetServerData();
+        GetNetworkData();
     }, [])
     return (
         <>

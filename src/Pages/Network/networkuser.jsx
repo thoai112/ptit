@@ -2,18 +2,12 @@ import React, { useState, useEffect } from 'react'
 import { Paper, makeStyles, TableBody, TableRow, TableCell, Toolbar, InputAdornment } from '@material-ui/core';
 import API from "../../api/api"
 import useTable from "../../Table/useTable";
-import NetworkForm from "./networkform";
 
 
 import Controls from "../../controls/Controls";
 
 import { Search } from "@material-ui/icons";
 import AddIcon from '@material-ui/icons/Add';
-import Popup from "../../Table/Popup";
-import EditOutlinedIcon from '@material-ui/icons/EditOutlined';
-import CloseIcon from '@material-ui/icons/Close';
-import Notification from "../../Table/Notification";
-import ConfirmDialog from "../../Table/ConfirmDialog";
 
 const useStyles = makeStyles(theme => ({
     pageContent: {
@@ -40,12 +34,8 @@ const headCells = [
 export default function Networksuser() {
 
     const classes = useStyles();
-    const [recordForEdit, setRecordForEdit] = useState(null)
     const [records, setRecords] = useState([])
     const [filterFn, setFilterFn] = useState({ fn: items => { return items; } })
-    const [openPopup, setOpenPopup] = useState(false)
-    const [notify, setNotify] = useState({ isOpen: false, message: '', type: '' })
-    const [confirmDialog, setConfirmDialog] = useState({ isOpen: false, title: '', subTitle: '' })
 
     const {
         TblContainer,
@@ -57,7 +47,7 @@ export default function Networksuser() {
 
     const token = localStorage.getItem("token");
 
-    const GetServerData = () => {
+    const GetNetworkData = () => {
 
         API.get("/network/getnetwork", { headers: {"Authorization" : `Bearer ${token}`} })
             .then(response => {
@@ -82,7 +72,7 @@ export default function Networksuser() {
 
 
     useEffect(() => {
-        GetServerData();
+        GetNetworkData();
     }, [])
     return (
         <>

@@ -1,6 +1,6 @@
 import { Route, useLocation,Routes ,Navigate} from "react-router-dom";
 import Sidebar from "./Sidebar/index";
-import Home from "./Pages/Home";
+import Dashboard from "./Pages/Dashboard/Dashboard";
 
 import styled from "styled-components";
 import { AnimatePresence } from "framer-motion";
@@ -48,7 +48,7 @@ function App() {
                {
                   role === "Admin" ? (
                     <>
-                      <Route exact path="/" element={<Home />}/>
+                      <Route exact path="/" element={<Dashboard />}/>
                       <Route path="/user" element={<User/>} />
                       <Route path="/server" element={<Servers/>} />
                       <Route path="/network" element={<Networks/>} />

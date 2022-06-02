@@ -38,12 +38,8 @@ const headCells = [
 export default function Serversuser() {
 
     const classes = useStyles();
-    const [recordForEdit, setRecordForEdit] = useState(null)
     const [records, setRecords] = useState([])
     const [filterFn, setFilterFn] = useState({ fn: items => { return items; } })
-    const [openPopup, setOpenPopup] = useState(false)
-    const [notify, setNotify] = useState({ isOpen: false, message: '', type: '' })
-    const [confirmDialog, setConfirmDialog] = useState({ isOpen: false, title: '', subTitle: '' })
 
     const {
         TblContainer,
